@@ -1,12 +1,14 @@
 <template>
-  <header class="header" :class="'header-' + pageClass">
-    <Navigation />
-    <p class="bg-title">{{ pageTitle(pageClass) }}</p>
-  </header>
-  <main :class="'main-' + pageClass">
-    <RouterView />
-  </main>
-  <footer class="footer" :class="'footer-' + pageClass"></footer>
+  <div class="app" id="app">
+    <header class="header" :class="'header-' + pageClass">
+      <Navigation />
+      <p class="bg-title">{{ pageTitle(pageClass) }}</p>
+    </header>
+    <main :class="'main-' + pageClass">
+      <RouterView />
+    </main>
+    <footer class="footer" :class="'footer-' + pageClass"></footer>
+  </div>
 </template>
 
 <script setup lang="ts">
