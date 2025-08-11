@@ -1,83 +1,92 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
+  <header class="header" :class="'header-' + pageClass">
+    <Navigation />
+    <p class="bg-title">{{ pageTitle(pageClass) }}</p>
   </header>
-
-  <RouterView />
+  <main :class="'main-' + pageClass">
+    <RouterView />
+  </main>
+  <footer class="footer" :class="'footer-' + pageClass"></footer>
 </template>
 
+<script setup lang="ts">
+import { RouterView } from 'vue-router'
+import {computed } from 'vue'
+import { useRouter } from "vue-router";
+import Navigation from '@/components/modules/Navigation.vue';
+
+const router = useRouter();
+
+const pageClass = computed<string>(() => {
+  const currentPath = router.currentRoute.value.path;
+  const formatPath = currentPath.replace(/\//g, '');
+  return formatPath === '' ? 'home' : formatPath;
+});
+
+function pageTitle(pageClass: string) {
+  return pageClass.toUpperCase();
+}
+</script>
+
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+#app:has(#app main.main-home) {
+  overflow: hidden;
 }
 
-.logo {
+.nav-link {
   display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
+  padding: 10px;
+  min-width: 100px;
   text-align: center;
-  margin-top: 2rem;
+  border-radius: 15px;
+  font-size: 1.5rem;
+  color: #1f1f1f;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+.nav-link:hover {
+  background-color: rgb(82, 82, 82, 0.3);
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+.nav-link.router-link-active {
+  background: #626262;
+  color: #fff;
 }
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+.bg-title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -30px;
+  margin: auto;
+  text-align: center;
+  font-size: 18rem;
+  font-family: Verdana, Arial, sans-serif;
+  font-weight: bold;
+  line-height: 1;
+  color: #ececec;
+  z-index: -1;
 }
 
-nav a:first-of-type {
-  border: 0;
-}
+/* .main-home {
+  margin-top: 140px;
+} */
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+@media screen and (max-width: 768px) {
+  .nav {
+    gap: 10px;
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
+  .nav-link {
+    min-width: 70px;
   }
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+  .bg-title {
+    font-size: 7rem;
+    top: 6px;
   }
 
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+  /* .main-home {
+    margin-top: 50px;
+  } */
 }
 </style>
