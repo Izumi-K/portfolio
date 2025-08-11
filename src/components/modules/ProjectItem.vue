@@ -2,8 +2,7 @@
   <ul class="project-list-wrapper">
     <li class="project-list" v-for="data in dataList">
       <div @click="modalStore.modalOpen(data)">
-        <span class="project-thumb"><img :src="`src/assets/img/${ data.thumb }`" alt="サムネイル画像" width="440"
-            height="280"></span>
+        <span class="project-thumb"><img :src="getImageUrl(data.thumb)" alt="サムネイル画像" width="440" height="280"></span>
       </div>
     </li>
   </ul>
@@ -27,6 +26,10 @@ defineProps<{
     desc: string
   }[]
 }>()
+
+const getImageUrl = (fileName: string) => {
+  return new URL(`/src/assets/img/${fileName}`, import.meta.url).href
+}
 
 </script>
 

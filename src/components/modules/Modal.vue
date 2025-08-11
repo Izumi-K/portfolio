@@ -9,10 +9,10 @@
         <div class="modal-inner">
           <div class="modal-thumb-wrapper">
             <span class="modal-thumb">
-              <img :src="`src/assets/img/${modalStore.content.thumb}`" alt="案件画像" width="20" height="20">
+              <img :src="getImageUrl(modalStore.content.thumb)" alt="案件画像" width="20" height="20">
             </span>
             <span v-if="modalStore.content.thumb_2" class="modal-thumb">
-              <img :src="`src/assets/img/${modalStore.content.thumb_2}`" alt="案件画像2" width="20" height="20">
+              <img :src="getImageUrl(modalStore.content.thumb_2)" alt="案件画像2" width="20" height="20">
             </span>
           </div>
           <p class="modal-attention">※スクロールできます</p>
@@ -35,6 +35,10 @@
 import { useModalStore } from '@/stores/modalStore.ts'
 
 const modalStore = useModalStore();
+
+const getImageUrl = (fileName: string) => {
+  return new URL(`/src/assets/img/${fileName}`, import.meta.url).href
+}
 </script>
 
 <style scoped>
