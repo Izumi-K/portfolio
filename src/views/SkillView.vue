@@ -131,10 +131,6 @@ const otherTool = [
   margin-top: 30px;
 }
 
-.skill h2.section-hdg {
-  margin-bottom: 20px;
-}
-
 @media screen and (max-width: 768px) {
 
   .skill-inner,

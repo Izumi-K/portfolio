@@ -17,6 +17,7 @@ import ProjectItem from '@/components/modules/ProjectItem.vue';
 
 const projectData = [
   {
+    id: 'jetro',
     thumb: 'img_jetro_1.JPG',
     thumb_2: 'img_jetro_2.JPG',
     project: 'フランス向けの日本酒訴求のキャンペーンサイト',
@@ -26,6 +27,7 @@ const projectData = [
     desc: 'フランス人向けの日本酒訴求のキャンペーンサイトの新規実装。全体のコンポーネント設計、スタイル調整、モーダルやドロップダウン等の画面上の機能の実装を担当。',
   },
   {
+    id: 'alcon',
     thumb: 'img_alcon_1.JPG',
     thumb_2: '',
     project: '白内障の紹介サイト',
@@ -35,6 +37,7 @@ const projectData = [
     desc: '白内障基本知識の紹介サイトの新規実装。10~12ページほどの規模。全体のコンポーネント設計〜画面の実装までを一人称で担当。',
   },
   {
+    id: 'ichijo',
     thumb: 'img_ichijo_1.png',
     thumb_2: '',
     project: '工務店のコーポレートサイト',
@@ -47,6 +50,7 @@ const projectData = [
 
 const personalProjectData = [
   {
+    id: 'gas',
     thumb: 'img_form_1.png',
     thumb_2: 'img_form_2.png',
     project: 'Googleフォームから欠席届',
@@ -56,13 +60,14 @@ const personalProjectData = [
     desc: '常駐先の社内業務にてGASの導入があったためキャッチアップ目的で作成。Googleフォームから回答を行うと、回答を反映した欠席届のPDFデータを指定アドレス宛に送付する。作成データは指定のGoogleドライブに格納する。',
   },
   {
+    id: 'portfolio',
     thumb: 'img_portfolio_1.png',
     thumb_2: '',
     project: '個人ポートフォリオ',
     team: '個人開発',
     period: '2025年',
     skill: 'HTML5, CSS3, JavaScript, TypeScript, Vue.js',
-    desc: 'SPAのポートフォリオサイトを作成。',
+    desc: '本サイト。SPAのポートフォリオサイトを作成、Githubにて公開中。（https://github.com/Izumi-K/portfolio）',
   },
 ];
 

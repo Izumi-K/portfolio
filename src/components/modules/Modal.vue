@@ -1,6 +1,6 @@
 <template>
   <Teleport to="body">
-    <div v-if="modalStore.open" class="modal">
+    <div v-if="modalStore.open" class="modal" :class="modalStore.content.id">
       <div @click="modalStore.modalClose" class="modal-overlay"></div>
       <div class="modal-content">
         <button @click="modalStore.modalClose" class="modal-close">
@@ -48,7 +48,7 @@ const getImageUrl = (fileName: string) => {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .modal {
@@ -89,7 +89,7 @@ const getImageUrl = (fileName: string) => {
 }
 
 .modal-thumb {
-  max-height: 280px;
+  max-height: 320px;
   margin: auto;
   border-radius: 15px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -100,10 +100,24 @@ const getImageUrl = (fileName: string) => {
   vertical-align: middle;
 }
 
+.modal.portfolio .modal-thumb {
+  overflow: hidden;
+}
+
+.modal.gas .modal-thumb {
+  max-height: 280px;
+  overflow: hidden;
+}
+
 .modal-attention {
   margin-top: 5px;
   text-align: right;
   font-size: 1.1rem;
+}
+
+.modal.gas .modal-attention,
+.modal.portfolio .modal-attention {
+  display: none;
 }
 
 .modal-project {
@@ -129,16 +143,32 @@ const getImageUrl = (fileName: string) => {
 }
 
 @media screen and (max-width: 768px) {
+  .modal {
+    top: -30px;
+  }
+
+  .modal-close {
+    top: 10px;
+    right: 10px;
+  }
+
   .modal-content {
-    padding: 50px 15px 15px;
+    max-height: 520px;
+    padding: 42px 15px 15px;
   }
 
   .modal-thumb-wrapper {
     flex-direction: column;
   }
 
-  .modal-thumb {
+  .modal-thumb,
+  .modal.gas .modal-thumb {
     max-height: 180px;
+    overflow: auto;
+  }
+
+  .modal.gas .modal-attention {
+    display: block;
   }
 }
 </style>

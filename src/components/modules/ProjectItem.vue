@@ -17,6 +17,7 @@ const modalStore = useModalStore();
 
 defineProps<{
   dataList: {
+    id: string,
     thumb: string,
     thumb_2?: string,
     project: string,

@@ -58,7 +58,7 @@ function pageTitle(pageClass: string) {
   position: absolute;
   left: 0;
   right: 0;
-  top: -30px;
+  top: -10px;
   margin: auto;
   text-align: center;
   font-size: 18rem;
@@ -68,10 +68,6 @@ function pageTitle(pageClass: string) {
   color: #ececec;
   z-index: -1;
 }
-
-/* .main-home {
-  margin-top: 140px;
-} */
 
 @media screen and (max-width: 768px) {
   .nav {
@@ -86,9 +82,5 @@ function pageTitle(pageClass: string) {
     font-size: 7rem;
     top: 6px;
   }
-
-  /* .main-home {
-    margin-top: 50px;
-  } */
 }
 </style>

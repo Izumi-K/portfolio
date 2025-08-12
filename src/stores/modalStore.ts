@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 
 interface Content {
+  id: string;
   thumb: string;
   thumb_2?: string;
   project: string,
